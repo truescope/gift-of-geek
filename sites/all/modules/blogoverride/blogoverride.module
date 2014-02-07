@@ -80,6 +80,7 @@ function blogoverride_views_query_alter(&$view, &$query) {
 
 /**
  * Implements hook_menu_link_alter().
+ * This is the change we want to keep
  *
  * This gets triggered when a custom menu item is saved. Because it overrides the actual value
  * of the menu item, a feature module that is being overridden this way will always show
