@@ -97,3 +97,30 @@ function blogoverride_menu_link_alter(&$item) {
     $item['link_title'] = 'Overridden blog menu title';
   }
 }
+
+
+/**
+ * Implements hook_strongarm_alter().
+ *
+ * In this case, we're changing a variable to not display the comment form below
+ * blog entries and to disable the preview button.
+ */
+function blogoverride_strongarm_alter(&$items) {
+  $items['comment_form_location_blog_entry']->value = 0;
+  $items['comment_preview_blog_entry']->value = 0;
+}
+
+
+/**
+ * Implements hook_user_default_roles_alter().
+ *
+ * This is supplied by the Features module. In this case, we want to change
+ * the 'blog editor' role to be 'overridden blog editor'. Unless we are just installing
+ * the feature, this will result in both roles existing, so you will need to delete
+ * the original role after applying this change (by clearing the cache or by reverting
+ * the feature module). After that you're good to go. This will cause the feature
+ * module to always be in an 'overridden' state.
+ */
+function blogoverride_user_default_roles_alter(&$roles) {
+  $roles['blog editor']['name'] = 'overridden blog editor';
+}
