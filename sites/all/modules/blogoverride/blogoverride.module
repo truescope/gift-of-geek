@@ -67,6 +67,7 @@ function blogoverride_views_pre_build(&$view) {
 
 /**
  * Implements hook_views_query_alter().
+ * This change will cause conflict.
  *
  * If you need to change a query produced by Views, the Drupal 7 database API makes
  * it very easy to fine-tune or override a query.
